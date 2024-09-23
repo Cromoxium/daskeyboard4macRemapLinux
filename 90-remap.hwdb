@@ -1,0 +1,40 @@
+######################################################################
+# This be a custom udev scancodes to keycodes map for                #
+# the Mac version of the daskeyboard 4 DASK4MACCLI-3G7-r1.1          #
+# that I bought from a fent fiend for five dollors and a cig.        #
+# it will make the keyboard behave like a real keyboard              #
+# rather than a mac keyboard. It may do the same for                 #
+# other mac keyboards aswell.                                        #
+#                                                                    #
+#  To find you keyboard's ID run:                                    #
+#             sudo evtest                                            ## 
+# Then chose you kebord. Mine was /event16 so I entered 16.          #
+# The terminal will then vomit out a pile of keyborad stuff. Scroll  #
+# back up to where you entered your keyboard's device number and     ##
+# 2 lines below it you should see "Input device ID:..."              ##
+# I got:                                                             #
+#"Input device ID: bus 0x3 vendor 0x24f0 product 0x141 version 0x110"#
+# so my Keyboard's device is "b0003v24F0p0141e0110"                  #
+# so figur that out and save.                                        #
+# You can then sudo cp this into \etc\udev\hwdb.d\                   #
+# Then run:                                                          #
+#             sudo systemd-hwdb update                               #
+#             sudo udevadm trigger                                   #
+#                                                                    # 
+# I made this for myself so I don't have to figure it out again,     #
+# so feel free to let me know if it worked out for me in the future  #
+#                                                                    #
+######################################################################
+
+#          |----Device ID------|        It need that * at the end    # 
+evdev:input:b0003v24F0p0141e0110*
+ KEYBOARD_KEY_70053=0x45     #       CLEAR = NUMLOCK
+ KEYBOARD_KEY_C00B8=0x6E     #       EJECT = INSERT
+ KEYBOARD_KEY_70068=0xd2     #         F13 = PRINT
+ KEYBOARD_KEY_70069=0x46     #         F14 = SCROLLLOCK
+ KEYBOARD_KEY_7006a=0x77     #         F15 = PAUSE
+ KEYBOARD_KEY_700e3=0x38     #     LEFTCMD = LEFTALT
+ KEYBOARD_KEY_700e2=0x7d     #  LEFTOPTION = LEFTMETA
+ KEYBOARD_KEY_700e7=0x64     #    RIGHTCMD = RIGHTALT
+ KEYBOARD_KEY_700e6=0X7e     # RIGHTOPTION = RIGHTMETA 
+
