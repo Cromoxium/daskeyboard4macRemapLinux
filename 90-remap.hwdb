@@ -7,11 +7,11 @@
 # other mac keyboards aswell.                                        #
 #                                                                    #
 #  To find you keyboard's ID run:                                    #
-#             sudo evtest                                            ## 
+#             sudo evtest                                            #
 # Then chose you kebord. Mine was /event16 so I entered 16.          #
 # The terminal will then vomit out a pile of keyborad stuff. Scroll  #
-# back up to where you entered your keyboard's device number and     ##
-# 2 lines below it you should see "Input device ID:..."              ##
+# back up to where you entered your keyboard's device number and     #
+# 2 lines below it you should see "Input device ID:..."              #
 # I got:                                                             #
 #"Input device ID: bus 0x3 vendor 0x24f0 product 0x141 version 0x110"#
 # so my Keyboard's device is "b0003v24F0p0141e0110"                  #
@@ -20,13 +20,13 @@
 # Then run:                                                          #
 #             sudo systemd-hwdb update                               #
 #             sudo udevadm trigger                                   #
-#                                                                    # 
+#                                                                    #
 # I made this for myself so I don't have to figure it out again,     #
 # so feel free to let me know if it worked out for me in the future  #
 #                                                                    #
 ######################################################################
 
-#          |----Device ID------|        It need that * at the end    # 
+#          |----Device ID------|        It need that * at the end    #
 evdev:input:b0003v24F0p0141e0110*
  KEYBOARD_KEY_70053=0x45     #       CLEAR = NUMLOCK
  KEYBOARD_KEY_C00B8=0x6E     #       EJECT = INSERT
@@ -37,4 +37,3 @@ evdev:input:b0003v24F0p0141e0110*
  KEYBOARD_KEY_700e2=0x7d     #  LEFTOPTION = LEFTMETA
  KEYBOARD_KEY_700e7=0x64     #    RIGHTCMD = RIGHTALT
  KEYBOARD_KEY_700e6=0X7e     # RIGHTOPTION = RIGHTMETA 
-
